@@ -144,7 +144,7 @@ You can run the following command in the terminal to format your project:
 
 `npm run format`
 
-## `eslint.config.mjs` file rule section correction:
+## `eslint.config.mjs` file rules section correction:
 
 ````
 rules: {
