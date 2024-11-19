@@ -1,4 +1,5 @@
 # Express-Typescript-eslint-prettier_setup
+
 ## express-typescript-eslint-prettier_setup
 
 This article will help you to instantly setup an express.js server with typescript, eslint and prettier. Follow this article to get the boilerplate, so that you can focus on building your application.
@@ -6,68 +7,69 @@ This article will help you to instantly setup an express.js server with typescri
 We will be using yarn package manager in this project, you can also use npm or any other package.
 
 ## Step 1 — Initialize your project
+
 First of all create your project directory, and in your terminal navigate to the folder where you want to create your server and initialze with yarn.
 
-```npm init -y```
+`npm init -y`
 
 Now install Express in your project.
 
-```npm i express```
+`npm i express`
 
 ## Step 2 — Adding TypeScript
 
 We need to add a typescript package in our project, so that we can use the TypeScript compiler and other related tools.
 
-```npm i -D typescript```
+`npm i -D typescript`
 
 This command will add typescript package as a dev-dependency in our project.
 
 Now, we need to add typescript config file, for that we will use the below given command.
 
-```tsc --init```
+`tsc --init`
 
 This will create a tsconfig.json file, with the default compiler configurations shown in the image below.
 
 In the tsconfig.json file, remove the comments on the rootDir option and modify it, to set src as root directory for typescript.
 
-```"rootDir": "./src",```
+`"rootDir": "./src",`
 
 Similarly, do this for outDir option as well
 
-```"outDir": "./dist",```
+`"outDir": "./dist",`
 
 All .js files will be created in this build folder after compiling the .ts files which are inside the src folder.
 
 Finally, at the end of the tsconfig.json file, add these two options as well. This will tell the compiler which files are needed to be compiled.
 
-```// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */```
+`// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */`
 
-```"skipLibCheck": true                                 /* Skip type checking all .d.ts files. */```
+`"skipLibCheck": true                                 /* Skip type checking all .d.ts files. */`
 
-```"include": ["src/**/*.ts"],```
+`"include": ["src/**/*.ts"],`
 
-```"exclude": ["node_modules"],```
+`"exclude": ["node_modules"],`
 
-Now to check everything is working fine, create a __index.ts__ file inside the __src__ folder. Put some code inside it and then run it in the terminal. You can see that a __index.js__ file is created inside the build folder.
+Now to check everything is working fine, create a **index.ts** file inside the **src** folder. Put some code inside it and then run it in the terminal. You can see that a **index.js** file is created inside the build folder.
 
 If you are seeing some red lines in your code, then probably you need to add a package that offers type definitions for the Node.js runtime and its modules.
 
-```npm i -D @types/node```
+`npm i -D @types/node`
 
 ## Step 3 — Adding Eslint
 
 For adding eslint, we will install the required packages given below.
 
-```npm i -D eslint@9.14.0 @eslint/js @types/eslint__js typescript typescript-eslint```
+`npm i -D eslint@9.14.0 @eslint/js @types/eslint__js typescript typescript-eslint`
 
-Now make a eslint.config.mjs file in the root of the project director.
+Now make a `eslint.config.mjs` file in the root of the project director.
 
-```npx eslint --init```
+`npx eslint --init`
 
-At this point you may see that your version of eslint: "^9.14.0" has been changed to eslint: ```"^9.15.0"```
+At this point you may see that your version of eslint: "^9.14.0" has been changed to eslint: `"^9.15.0"`
 
-if that happens remove the eslint : ```npm remove eslint```
-Then re-install: ```npm i -D eslint@9.14.0```
+if that happens remove the eslint : `npm remove eslint`
+Then re-install: `npm i -D eslint@9.14.0`
 
 Now add the following code inside it.
 
@@ -102,20 +104,20 @@ export default [
 
 Now in the terminal, you can run npm eslint . You can see that eslint is working.
 
-We can also add scripts for eslint in the __package.json__ file.
+We can also add scripts for eslint in the **package.json** file.
 
 ```
 "scripts": {
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix"
   },
-  ```
+```
 
 ## Step 4 — Adding Prettier
 
 Add the prettier package in your project.
 
-```npm i -D --exact prettier```
+`npm i -D --exact prettier`
 
 Now create `.prettierrc` and `.prettierignore` file in the root of your project.
 
@@ -136,8 +138,21 @@ dist
 
 Finally we can add scripts for prettier as well in the `package.json` file.
 
-```"format": "prettier . --write"```
+`"format": "prettier . --write"`
 
 You can run the following command in the terminal to format your project:
 
-```npm run format```
+`npm run format`
+
+## `eslint.config.mjs` file rule section correction:
+
+````
+rules: {
+      'no-unused-vars': 'error',
+      'no-unused-expressions': 'error',
+      'prefer-const': 'error',
+      'no-console': 'warn',
+      'no-undef': 'error',
+    },
+    
+````
